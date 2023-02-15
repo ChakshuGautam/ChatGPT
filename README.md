@@ -96,7 +96,7 @@ for data in chatbot.ask(
 print()
 ```
 
-#### Basic example (single result):
+#### Basic example (single result async):
 
 ```python
 from revChatGPT.V1 import Chatbot
@@ -109,12 +109,9 @@ chatbot = Chatbot(config={
 prompt = "how many beaches does portugal have?"
 response = ""
 
-for data in chatbot.ask(
-  prompt
-):
-    response = data["message"]
-
-print(response) 
+async for data in chatbot.ask(prompt, conversation_id=None, parent_id=None, context=context):
+  response = data["message"]
+print(response)
 ```
 #### All API methods
 Refer to the [wiki](https://github.com/acheong08/ChatGPT/wiki/V1) for advanced developer usage.
